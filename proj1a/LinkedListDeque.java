@@ -1,9 +1,9 @@
 public class LinkedListDeque<T> {
 
     private static class ItemNode<T> {
-        T item;
         ItemNode<T> prev;
         ItemNode<T> next;
+        T item;
 
         ItemNode(T item, ItemNode<T> prev, ItemNode<T> next) {
             this.item = item;

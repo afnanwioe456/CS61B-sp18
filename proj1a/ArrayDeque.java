@@ -122,7 +122,7 @@ public class ArrayDeque<T> {
             return null;
         }
         int i = nextFirst + 1 + index;
-        if (i > items.length) {
+        if (i >= items.length) {
             i -= items.length;
         }
         return items[i];
