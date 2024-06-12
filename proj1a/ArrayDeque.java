@@ -24,7 +24,9 @@ public class ArrayDeque<T> {
     private void resizeLonger(boolean flag) {
         T[] newItems = (T[]) new Object[2 * items.length];
         int start = nextFirst;
-        if (flag) { start = movePointer(start, true); }
+        if (flag) {
+            start = movePointer(start, true);
+        }
         System.arraycopy(items, start, newItems, 0, items.length - start);
         System.arraycopy(items, 0, newItems, items.length - start, start + size - items.length);
         items = newItems;
@@ -39,7 +41,7 @@ public class ArrayDeque<T> {
                 pointer = 0;
             }
         } else {
-            pointer --;
+            pointer--;
             if (pointer < 0) {
                 pointer = items.length - 1;
             }
@@ -71,14 +73,18 @@ public class ArrayDeque<T> {
         T[] newItems = (T[]) new Object[items.length / 2];
         int start = movePointer(nextFirst, true);
         System.arraycopy(items, start, newItems, 0, newItems.length - start);
-        if (start + size - items.length > 0)
+        if (start + size - items.length > 0) {
             System.arraycopy(items, 0, newItems, newItems.length - start, start + size - items.length);
+        }
         items = newItems;
         nextFirst = items.length - 1;
         nextLast = size;
     }
 
     public void removeFirst() {
+        if (size == 0) {
+            return;
+        }
         nextFirst = movePointer(nextFirst, true);
         items[nextFirst] = null;
         size--;
@@ -88,6 +94,9 @@ public class ArrayDeque<T> {
     }
 
     public void removeLast() {
+        if (size == 0) {
+            return;
+        }
         nextLast = movePointer(nextLast, false);
         items[nextLast] = null;
         size--;
@@ -112,12 +121,18 @@ public class ArrayDeque<T> {
     }
 
     public T get(int index) {
-        if (index < 0 || index >= size) { return null; }
+        if (index < 0 || index >= size) {
+            return null;
+        }
         int i = nextFirst + 1 + index;
         if (i > items.length) {
             i -= items.length;
         }
         return items[i];
+    }
+
+    public static void main(String[] args) {
+        
     }
 
 }
