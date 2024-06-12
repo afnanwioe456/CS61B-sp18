@@ -98,6 +98,9 @@ public class ArrayDeque<T> {
         if (items.length * 0.25 >= size && items.length > 8) {
             resizeShorter();
         }
+        /* wrong code
+        return items[nextFirst];
+         */
         return returnItem;
     }
 
