@@ -17,8 +17,7 @@ public class ArrayDeque<T> {
     }
 
     public boolean isEmpty() {
-        return nextLast - nextFirst == 0
-                || nextFirst - nextLast == items.length - 1;
+        return size == 0;
     }
 
     private void resizeLonger(boolean flag) {
@@ -81,28 +80,28 @@ public class ArrayDeque<T> {
         nextLast = size;
     }
 
-    public void removeFirst() {
+    public T removeFirst() {
         if (size == 0) {
-            return;
+            return null;
         }
         nextFirst = movePointer(nextFirst, true);
-        items[nextFirst] = null;
         size--;
         if (items.length * 0.25 >= size) {
             resizeShorter();
         }
+        return items[nextFirst];
     }
 
-    public void removeLast() {
+    public T removeLast() {
         if (size == 0) {
-            return;
+            return null;
         }
         nextLast = movePointer(nextLast, false);
-        items[nextLast] = null;
         size--;
         if (items.length * 0.25 >= size) {
             resizeShorter();
         }
+        return items[nextFirst];
     }
 
     public void printDeque() {
@@ -130,9 +129,4 @@ public class ArrayDeque<T> {
         }
         return items[i];
     }
-
-    public static void main(String[] args) {
-        
-    }
-
 }
