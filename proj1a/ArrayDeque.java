@@ -71,9 +71,9 @@ public class ArrayDeque<T> {
     private void resizeShorter() {
         T[] newItems = (T[]) new Object[items.length / 2];
         int start = movePointer(nextFirst, true);
-        System.arraycopy(items, start, newItems, 0, newItems.length - start);
+        System.arraycopy(items, start, newItems, 0, items.length - start);
         if (start + size - items.length > 0) {
-            System.arraycopy(items, 0, newItems, newItems.length - start, start + size - items.length);
+            System.arraycopy(items, 0, newItems, items.length - start, start + size - items.length);
         }
         items = newItems;
         nextFirst = items.length - 1;
@@ -85,11 +85,12 @@ public class ArrayDeque<T> {
             return null;
         }
         nextFirst = movePointer(nextFirst, true);
+        T returnItem = items[nextFirst];
         size--;
-        if (items.length * 0.25 >= size) {
+        if (items.length * 0.25 >= size && items.length > 8) {
             resizeShorter();
         }
-        return items[nextFirst];
+        return returnItem;
     }
 
     public T removeLast() {
@@ -97,11 +98,12 @@ public class ArrayDeque<T> {
             return null;
         }
         nextLast = movePointer(nextLast, false);
+        T returnItem = items[nextLast];
         size--;
-        if (items.length * 0.25 >= size) {
+        if (items.length * 0.25 >= size && items.length > 8) {
             resizeShorter();
         }
-        return items[nextFirst];
+        return returnItem;
     }
 
     public void printDeque() {
@@ -112,11 +114,7 @@ public class ArrayDeque<T> {
                 System.out.printf("%s ", items[i - items.length]);
             }
         }
-        if (nextLast == 0) {
-            System.out.println(items[items.length - 1]);
-        } else {
-            System.out.println(items[nextLast - 1]);
-        }
+        System.out.println(items[movePointer(nextLast, false)]);
     }
 
     public T get(int index) {
@@ -128,5 +126,39 @@ public class ArrayDeque<T> {
             i -= items.length;
         }
         return items[i];
+    }
+
+    public static void main(String[] args) {
+        ArrayDeque<Integer> a = new ArrayDeque<>();
+        System.out.println(a.removeFirst());
+        a.addFirst(1);
+        a.removeLast();
+        a.addFirst(4);
+        a.addFirst(3);
+        a.addFirst(2);
+        a.addFirst(2);
+        a.addFirst(2);
+        a.addFirst(2);
+        a.addFirst(2);
+        a.addFirst(2);
+        a.addFirst(12);
+        a.addFirst(11);
+        a.addFirst(1);
+        a.addFirst(1);
+        a.addFirst(1);
+        a.addFirst(1);
+        a.addFirst(1);
+        a.addFirst(1);
+        a.addFirst(0);
+        a.removeLast();
+        a.removeLast();
+        a.removeLast();
+        a.removeLast();
+        a.removeLast();
+        a.removeLast();
+        a.removeLast();
+        a.removeLast();
+        a.removeLast();
+        a.printDeque();
     }
 }
