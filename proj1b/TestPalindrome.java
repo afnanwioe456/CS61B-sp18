@@ -17,7 +17,7 @@ public class TestPalindrome {
     }
 
     @Test
-    public void testIsPalindromeCornerCases(){
+    public void testIsPalindromeCornerCases() {
         boolean flag = palindrome.isPalindrome("");
         assertTrue(flag);
         flag = palindrome.isPalindrome("a");
@@ -25,20 +25,20 @@ public class TestPalindrome {
     }
 
     @Test
-    public void testIsPalindrome(){
+    public void testIsPalindrome() {
         boolean flag = palindrome.isPalindrome("abc");
         assertFalse(flag);
     }
 
     @Test
-    public void testIsOffByOnePalindrome(){
+    public void testIsOffByOnePalindrome() {
         CharacterComparator cc = new OffByOne();
         boolean flag = palindrome.isPalindrome("baa", cc);
         assertTrue(flag);
     }
 
     @Test
-    public void testIsNotOffByOnePalindrome(){
+    public void testIsNotOffByOnePalindrome() {
         CharacterComparator cc = new OffByOne();
         boolean flag = palindrome.isPalindrome("abbb", cc);
         assertFalse(flag);

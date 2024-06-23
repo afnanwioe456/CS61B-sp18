@@ -8,7 +8,7 @@ public class TestOffByOne {
 
     // Your tests go here.
     @Test
-    public void testIsOffByOne(){
+    public void testIsOffByOne() {
         boolean trueFlag = offByOne.equalChars('a', 'b');
         assertTrue(trueFlag);
         trueFlag = offByOne.equalChars('r', 'q');
@@ -16,7 +16,7 @@ public class TestOffByOne {
     }
 
     @Test
-    public void testIsNotOffByOne(){
+    public void testIsNotOffByOne() {
         boolean falseFlag = offByOne.equalChars('a', 'e');
         assertFalse(falseFlag);
     }
