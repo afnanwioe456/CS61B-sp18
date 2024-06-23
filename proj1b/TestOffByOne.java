@@ -11,7 +11,7 @@ public class TestOffByOne {
     public void testIsOffByOne() {
         boolean trueFlag = offByOne.equalChars('a', 'b');
         assertTrue(trueFlag);
-        trueFlag = offByOne.equalChars('r', 'q');
+        trueFlag = offByOne.equalChars('B', 'a');
         assertTrue(trueFlag);
     }
 
