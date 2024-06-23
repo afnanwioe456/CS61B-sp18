@@ -15,4 +15,18 @@ public class TestPalindrome {
         }
         assertEquals("persiflage", actual.toString());
     }
+
+    @Test
+    public void testIsPalindromeCornerCases(){
+        boolean flag = palindrome.isPalindrome("");
+        assertTrue(flag);
+        flag = palindrome.isPalindrome("a");
+        assertTrue(flag);
+    }
+
+    @Test
+    public void testIsPalindrome(){
+        boolean flag = palindrome.isPalindrome("abc");
+        assertFalse(flag);
+    }
 }
