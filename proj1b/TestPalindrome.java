@@ -29,4 +29,19 @@ public class TestPalindrome {
         boolean flag = palindrome.isPalindrome("abc");
         assertFalse(flag);
     }
+
+    @Test
+    public void testIsOffByOnePalindrome(){
+        CharacterComparator cc = new OffByOne();
+        boolean flag = palindrome.isPalindrome("baa", cc);
+        assertTrue(flag);
+    }
+
+    @Test
+    public void testIsNotOffByOnePalindrome(){
+        CharacterComparator cc = new OffByOne();
+        boolean flag = palindrome.isPalindrome("abbb", cc);
+        assertFalse(flag);
+    }
+
 }
