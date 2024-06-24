@@ -10,10 +10,12 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> {
     /* Array for storing the buffer data. */
     private final T[] rb;
 
+    @Override
     public int capacity() {
         return capacity;
     }
 
+    @Override
     public int fillCount() {
         return fillCount;
     }
